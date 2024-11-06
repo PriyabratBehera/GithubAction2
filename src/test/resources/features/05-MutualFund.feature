@@ -7,7 +7,7 @@ Feature: Mutual Funds Scenarios
     And application launched successfully
     When user clicks on Mutual Funds
     And user click by text contains "Create MF"
-    And user search for mutual fund "aditya infra"
+    And user search for mutual fund "aditya infra"a
     And user click Add to Cart for Aditya Birla
     When user clicks on complete KYC
     And user go back from "KYC" screen

@@ -61,7 +61,7 @@ jobs:
           run: file src/test/resources/Apps/app-release-25.apk
 
         - name: Run Appium Tests with Verbose Logs
-          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=testng-android.xml
+          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=${{ vars.TESTNG_ANDROID_XMLFILE }}
 
 #        - name: Appium Tests
 #          run: |
