@@ -49,9 +49,6 @@ jobs:
               restore-keys: |
                 ${{ runner.os }}-maven-
 
-        - name: Build with Maven
-          run: mvn clean install
-
         - name: check variable
           run: echo "DEVICE_TYPE is ${{ github.event.inputs.DEVICE_TYPE }}"
 
