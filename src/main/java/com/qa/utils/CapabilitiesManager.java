@@ -51,7 +51,7 @@ public class CapabilitiesManager {
                         androidAppUrl = System.getProperty("user.dir") + File.separator + "pipe-" + System.getProperty("PipelineNumber").trim() + "-app-release.apk";
                     }
                     utils.log().info("appUrl is: " + androidAppUrl);
-                    caps.setCapability("app", androidAppUrl);
+//                    caps.setCapability("app", androidAppUrl);
                     break;
                 case "iOS":
                     String iOSAppUrl;
