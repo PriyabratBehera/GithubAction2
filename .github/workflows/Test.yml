@@ -54,10 +54,16 @@ jobs:
         - name: Verify APK file exists
           run: ls -l src/test/resources/Apps
 
-        - name: List feature files
-          run: find src/test/resources -name "*.feature"
+        - name: Check and Set APK Permissions
+          run: chmod +r src/test/resources/Apps/app-release-25.apk
 
-        - name: Appium Tests
-          run: |
-            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
-            mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
+        - name: Verify APK Format
+          run: file src/test/resources/Apps/app-release-25.apk
+
+        - name: Run Appium Tests with Verbose Logs
+          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=testng-android.xml
+
+#        - name: Appium Tests
+#          run: |
+#            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
+#            mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
