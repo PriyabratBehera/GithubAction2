@@ -1,3 +1,73 @@
+#name: Floatr Project
+#on:
+#  workflow_dispatch:
+#    inputs:
+#      DEVICE_TYPE:
+#        description: 'Select the device type'
+#        required: true
+#        default: 'iOS'
+#        type: choice
+#        options:
+#          - "Android"
+#          - "iOS"
+#          - "Both in parallel"
+#
+#      TEST_TYPE:
+#        description: 'Select the test type'
+#        required: true
+#        default: 'Smoke Test'
+#        type: choice
+#        options:
+#          - "Smoke Test"
+#          - "Regression Test"
+#          - "Validation Test"
+#
+#      MODULE_NAME:
+#        description: 'Select the test type'
+#        required: true
+#        default: 'Smoke Test'
+#        type: choice
+#        options:
+#          - "Smoke Test"
+#          - "Regression Test"
+#          - "Validation Test"
+#
+#jobs:
+#  test:
+#    runs-on:
+#      - self-hosted
+#    env:
+#      MAVEN_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
+#
+#    steps:
+#        - name: Appium Tests
+#          uses: actions/checkout@v3
+#
+#        - name: Cache Maven dependencies
+#          uses: actions/cache@v2
+#          with:
+#              path: ~/.m2/repository
+#              key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+#              restore-keys: |
+#                ${{ runner.os }}-maven-
+#
+#        - name: Verify APK file exists
+#          run: ls -l src/test/resources/Apps
+#
+#        - name: Check and Set APK Permissions
+#          run: chmod +r src/test/resources/Apps/app-release-25.apk
+#
+#        - name: Verify APK Format
+#          run: file src/test/resources/Apps/app-release-25.apk
+#
+#        - name: Run Appium Tests with Verbose Logs
+#          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=testng-android.xml
+#
+##        - name: Appium Tests
+##          run: |
+##            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
+##            mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
+
 name: Floatr Project
 on:
   workflow_dispatch:
@@ -11,7 +81,7 @@ on:
           - "Android"
           - "iOS"
           - "Both in parallel"
-      
+
       TEST_TYPE:
         description: 'Select the test type'
         required: true
@@ -23,47 +93,46 @@ on:
           - "Validation Test"
 
       MODULE_NAME:
-        description: 'Select the test type'
+        description: 'Select the test module'
         required: true
         default: 'Smoke Test'
         type: choice
         options:
           - "Smoke Test"
           - "Regression Test"
-          - "Validation Test"      
-      
+          - "Validation Test"
+
 jobs:
-  test:
-    runs-on:
-      - self-hosted
+  setup:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Cache Maven dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Verify APK file exists
+        run: ls -l src/test/resources/Apps
+
+      - name: Check and Set APK Permissions
+        run: chmod +r src/test/resources/Apps/app-release-25.apk
+
+      - name: Verify APK Format
+        run: file src/test/resources/Apps/app-release-25.apk
+
+  run-tests:
+    runs-on: self-hosted
+    needs: setup
     env:
       MAVEN_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
-
     steps:
-        - name: Appium Tests
-          uses: actions/checkout@v3
-
-        - name: Cache Maven dependencies
-          uses: actions/cache@v2
-          with:
-              path: ~/.m2/repository
-              key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-              restore-keys: |
-                ${{ runner.os }}-maven-
-
-        - name: Verify APK file exists
-          run: ls -l src/test/resources/Apps
-
-        - name: Check and Set APK Permissions
-          run: chmod +r src/test/resources/Apps/app-release-25.apk
-
-        - name: Verify APK Format
-          run: file src/test/resources/Apps/app-release-25.apk
-
-        - name: Run Appium Tests with Verbose Logs
-          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=testng-android.xml
-
-#        - name: Appium Tests
-#          run: |
-#            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
-#            mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
+      - name: Run Appium Tests with Verbose Logs
+        run: |
+          echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
+          mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=testng-android.xml
