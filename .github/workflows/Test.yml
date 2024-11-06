@@ -36,7 +36,9 @@ jobs:
   test:
     runs-on:
       - self-hosted
-      
+    env:
+      MAVEN_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
+
     steps:
         - name: Appium Tests
           uses: actions/checkout@v3
@@ -49,9 +51,13 @@ jobs:
               restore-keys: |
                 ${{ runner.os }}-maven-
 
-        - name: check variable
-          run: echo "DEVICE_TYPE is ${{ github.event.inputs.DEVICE_TYPE }}"
+        - name: Verify APK file exists
+          run: ls -l src/test/resources/Apps
 
-        - name: run android
-          run: mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
-#          run: mvn test -Dsurefire.suiteXmlFiles=/Users/litanbehera/Documents/floatr-app-automation/testng-android.xml -Dcucumber.filter.tags="@MutualFundRegression"
+        - name: List feature files
+          run: find src/test/resources -name "*.feature"
+
+        - name: Appium Tests
+          run: |
+            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
+            mvn test -Dsurefire.suiteXmlFiles=testng-android.xml -Dcucumber.filter.tags=@MutualFundRegression
