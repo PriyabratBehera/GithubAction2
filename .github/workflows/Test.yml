@@ -52,7 +52,8 @@ jobs:
         - name: check variable
           run: echo "DEVICE_TYPE is ${{ github.event.inputs.DEVICE_TYPE }}"
 
-        - name: run android 
-          run: mvn test -Dsurefire.suiteXmlFiles=/Users/litanbehera/Documents/floatr-app-automation/testng-android.xml -Dcucumber.filter.tags="@MutualFundRegression"
+        - name: run android
+          run: mvn clean install
+#          run: mvn test -Dsurefire.suiteXmlFiles=/Users/litanbehera/Documents/floatr-app-automation/testng-android.xml -Dcucumber.filter.tags="@MutualFundRegression"
 
 
