@@ -61,8 +61,8 @@ jobs:
           run: file src/test/resources/Apps/app-release-25.apk
 
         - name: Run Appium Tests with Verbose Logs
-          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=${{ vars.TESTNG_ANDROID_XMLFIL }}
-
+#          run: mvn clean test -Dappium.server.logs -Dsurefire.suiteXmlFiles=${{ vars.TESTNG_ANDROID_XMLFIL }}
+          run: mvn test -Dsurefire.suiteXmlFiles=${{ vars.TESTNG_ANDROID_XMLFIL }} -Dcucumber.filter.tags=@BudgetRegression
 #        - name: Appium Tests
 #          run: |
 #            echo "Running tests on device type: ${{ github.event.inputs.DEVICE_TYPE }}"
