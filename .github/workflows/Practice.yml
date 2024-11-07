@@ -2,13 +2,14 @@ name: Yml writing practice
 
 on: workflow_dispatch
 
+env:
+  kay: "value"
+  key1: "value1"
+
 jobs:
   test:
     runs-on:
       - self-hosted
-    env:
-      kay: "value"
-      key1: "value1"
 
     steps:
       - name: Print env first value
