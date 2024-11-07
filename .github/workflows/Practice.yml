@@ -26,4 +26,4 @@ jobs:
       - name: Print env second value
         run: |
           echo "Hello world!"
-          echo "${{var.TESTNG_ANDROID_XMLFILE}}"
+          echo "${{vars.TESTNG_ANDROID_XMLFILE}}"
