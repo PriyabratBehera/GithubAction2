@@ -1,0 +1,28 @@
+name: Yml writing practice
+
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on:
+      - self-hosted
+    env:
+      kay: "value"
+      key1: "value1"
+
+    steps:
+      - name: Print env first value
+        run: |
+          echo "Hello world!"
+          echo ${{env.kay}}
+        
+
+  deploy:
+    needs: test
+    runs-on:
+      - self-hosted
+    steps:
+      - name: Print env second value
+        run: |
+          echo "Hello world!"
+          echo ${{env.kay1}}
