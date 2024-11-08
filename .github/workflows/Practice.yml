@@ -22,7 +22,6 @@ jobs:
     needs: test
     runs-on:
       - self-hosted
-    environment: production
     steps:
       - name: Print env second value
         run: |
