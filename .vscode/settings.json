@@ -1,4 +1,9 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+        "cucumberautocomplete.steps": [
+          "src/test/java/com/qa/**/*.java"  // Update the path based on your step definitions
+        ],
+        "cucumberautocomplete.syncfeatures": "src/test/resources/features/*.feature",  // Update the path based on your feature files
+        "cucumberautocomplete.strictGherkinCompletion": true
 }
