@@ -6,14 +6,6 @@ jobs:
     steps:
       - name: Get Code
         run: |
-          echo "getting code"name: Deployment Exersice 1
-on: push
-jobs:
-  deploy:
-    runs-on: self-hosted
-    steps:
-      - name: Get Code
-        run: |
           echo "getting code"
   link:
     runs-on: self-hosted
