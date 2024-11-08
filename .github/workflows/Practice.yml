@@ -23,5 +23,5 @@ jobs:
     steps:
       - name: Print env second value
         run: |
-          echo "Hello world! world!"
+          echo "Hello world!"
           echo "${{vars.LASTNAME}}"
