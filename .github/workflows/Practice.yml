@@ -15,7 +15,7 @@ jobs:
       - name: Print env first value
         run: |
           echo "Hello world!"
-          echo "${{env.kay}}"
+          echo "${{secrets.TESTNGFILE}}"
         
 
   deploy:
