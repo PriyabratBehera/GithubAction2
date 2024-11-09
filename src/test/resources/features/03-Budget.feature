@@ -1,7 +1,7 @@
-@Regression @BudgetRegression
+#@Regression @BudgetRegression
 Feature: Create Budget Scenarios
 
-  @Validation @BudgetValidation
+  @Validation @BudgetValidation @BudgetRegression
   Scenario: Verify Validation in Create Budget Screen
     Given user clean up the app data for "9191787806 | 9191787806"
     And user login with user "9191787806 | 9191787806"
