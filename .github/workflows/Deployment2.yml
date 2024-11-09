@@ -2,7 +2,7 @@ name: Deployment Exercise 2
 on:
   pull_request:
     branches:
-      - develop_p
+      - main
 jobs:
   deploy:
     runs-on: self-hosted
@@ -16,5 +16,6 @@ jobs:
       - name: Get Code line 2
         run: |
           echo "getting code line 2"
+          echo "Hii Priyabrat Behera"
           echo "Hii Priyabrat Behera"
           echo "Hii Priyabrat Behera"
