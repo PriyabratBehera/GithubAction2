@@ -65,11 +65,11 @@ jobs:
             find test-output/*.png -type f -execdir echo '{}' ';'
             find src/test/resources/adminfeatures/*.feature -type f -execdir echo '{}' ';'
 
-#        - name: download image
-#          uses: actions/download-artifact@v3
-#          with:
-#            name: cucumber report
-#            path: test-output/*.png
+        - name: download image
+          uses: actions/download-artifact@v3
+          with:
+            name: cucumber report
+            path: test-output/*.png
 
 
 
