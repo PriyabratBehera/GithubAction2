@@ -64,7 +64,7 @@ jobs:
           run: find test-output/*.png -type f -execdir echo '{}' ';'
 
         - name: download image
-          uses: actions/download-artifact@v43
+          uses: actions/download-artifact@v3
           with:
             name: cucumber report
             path: test-output/*.png
