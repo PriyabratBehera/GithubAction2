@@ -75,7 +75,10 @@ jobs:
           uses: actions/download-artifact@v4
           with:
             name: upload
+            path: /opt
 
+        - name: List Artifacts
+          run: ls /opt
 
 
 
