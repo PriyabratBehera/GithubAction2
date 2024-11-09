@@ -40,8 +40,10 @@ jobs:
       MAVEN_OPTS: "--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.lang.reflect=ALL-UNNAMED"
 
     steps:
-        - name: Appium Tests
+        - name: Get code
           uses: actions/checkout@v3
+          with:
+            repository: ${{ github.repository }}
 
         - name: Cache Maven dependencies
           uses: actions/cache@v2
@@ -65,11 +67,11 @@ jobs:
             find test-output/*.png -type f -execdir echo '{}' ';'
             find src/test/resources/adminfeatures/*.feature -type f -execdir echo '{}' ';'
 
-        - name: download image
-          uses: actions/download-artifact@v3
-          with:
-            name: cucumber report
-            path: test-output/*.png
+#        - name: download image
+#          uses: actions/download-artifact@v3
+#          with:
+#            name: cucumber report
+#            path: test-output/*.png
 
 
 
