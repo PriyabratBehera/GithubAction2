@@ -1,8 +1,5 @@
 name: Deployment Exercise 2
-on:
-  pull_request:
-    branches:
-      - develop_p
+on: push
 jobs:
   deploy:
     runs-on: self-hosted
