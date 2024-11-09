@@ -61,7 +61,9 @@ jobs:
           run: file src/test/resources/Apps/app-release-25.apk
 
         - name: publish file
-          run: find test-output/*.png -type f -execdir echo '{}' ';'
+          run: |
+            find test-output/*.png -type f -execdir echo '{}' ';'
+            find src/test/resources/adminfeatures/*.feature -type f -execdir echo '{}' ';'
 
         - name: download image
           uses: actions/download-artifact@v3
