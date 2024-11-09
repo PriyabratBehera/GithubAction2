@@ -71,14 +71,17 @@ jobs:
             name: upload
             path: test-output/*.png
 
-        - name: download image
-          uses: actions/download-artifact@v4
-          with:
-            name: upload
-            path: /opt
+  build:
+    runs-on:
+      - self-hosted
+    steps:
+      - name: download image
+        uses: actions/download-artifact@v4
+        with:
+          name: upload
 
-        - name: List Artifacts
-          run: ls /opt
+      - name: List Artifacts
+        run: ls
 
 
 
