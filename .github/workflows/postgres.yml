@@ -20,5 +20,7 @@ jobs:
         run: sudo apt-get install -y postgresql-client
 
       - name: show table
+        env:
+          PGPASSWORD: Behera@2002
         run: |
            psql -h localhost -U priyabrat -d Priyabrat -c "\d"
