@@ -26,7 +26,7 @@ jobs:
         env:
           PGPASSWORD: Behera@2002
         run: |
-           psql -h localhost -U priyabrat -d Priyabrat -f scripts/database_dump.sql
+           psql -h localhost -U priyabrat -d Priyabrat -v scripts/database_dump.sql
 
       - name: Show tables
         run: |
