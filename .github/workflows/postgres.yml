@@ -16,7 +16,9 @@ jobs:
 
 
     steps:
+      - name: Install PostgreSQL client
+        run: sudo apt-get install -y postgresql-client
+
       - name: show table
         run: |
-           psql -h localhost -U priyabrat -d Priyabrat    
-           \d
+           psql -h localhost -U priyabrat -d Priyabrat -c "\d"
