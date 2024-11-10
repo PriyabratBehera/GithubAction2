@@ -26,5 +26,10 @@ jobs:
         env:
           PGPASSWORD: Behera@2002
         run: |
-           psql -h localhost -U litanbehera -d Priyabrat -c "\d"
+           psql -h localhost -U priyabrat -d Priyabrat -f /Users/litanbehera/database_dump.sql
+
+      - name: Show tables
+        run: |
+          psql -h localhost -U priyabrat -d Priyabrat -c "SELECT * FROM books"
+
           
