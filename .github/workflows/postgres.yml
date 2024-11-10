@@ -19,9 +19,12 @@ jobs:
       - name: Install PostgreSQL client
         run: sudo apt-get install -y postgresql-client
 
-      - name: show table
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Initialize database with SQL file
         env:
           PGPASSWORD: Behera@2002
         run: |
-           psql -h localhost -U priyabrat -d Priyabrat -c "\d"
+           psql -h localhost -U litanbehera -d Priyabrat -c "\d"
           
