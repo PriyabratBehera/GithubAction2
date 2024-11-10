@@ -32,6 +32,9 @@ jobs:
         env:
           PGPASSWORD: Behera@2002
         run: |
-          psql -h localhost -U priyabrat -d Priyabrat -c "SELECT * FROM books"
+         psql -h localhost -U priyabrat -d Priyabrat -c "CREATE TABLE IF NOT EXISTS books1111 (id SERIAL PRIMARY KEY, title VARCHAR(100));"
+         psql -h localhost -U priyabrat -d Priyabrat -c "INSERT INTO books1111 (title) VALUES ('Sample Book');"
+         psql -h localhost -U priyabrat -d Priyabrat -c "SELECT * FROM books1111"
+         
 
           
