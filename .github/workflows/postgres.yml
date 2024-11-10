@@ -18,5 +18,5 @@ jobs:
     steps:
       - name: show table
         run: |
-           psql -U priyabrat -d Priyabrat    
+           psql -h localhost -U priyabrat -d Priyabrat    
            \d
