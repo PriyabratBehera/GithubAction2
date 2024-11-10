@@ -23,5 +23,5 @@ jobs:
         env:
           PGPASSWORD: Behera@2002
         run: |
-           psql -h localhost -U priyabrat -d Priyabrat
-           SELECT * FROM books
+           psql -h localhost -U priyabrat -d Priyabrat -c "SELECT * FROM books"
+          
