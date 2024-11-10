@@ -43,11 +43,11 @@ jobs:
 #      - name: Install PostgreSQL client
 #        run: sudo apt-get install -y postgresql-client
 
-      - name: Restore database with pg_restore
-        env:
-          PGPASSWORD: Behera@2002
-        run: |
-          pg_restore -h localhost -U priyabrat -d Priyabrat -v scripts/database_dump.sql
+#      - name: Restore database with pg_restore
+#        env:
+#          PGPASSWORD: Behera@2002
+#        run: |
+#          pg_restore -h localhost -U priyabrat -d Priyabrat -v scripts/database_dump.sql
 
       - name: Show tables
         env:
