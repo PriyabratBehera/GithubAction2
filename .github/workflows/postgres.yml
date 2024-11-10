@@ -1,4 +1,4 @@
-name: Postgress connection
+name: Postgres connection
 on:
   workflow_dispatch
 jobs:
@@ -17,4 +17,6 @@ jobs:
 
     steps:
       - name: show table
-        run: \d
+        run: |
+          psql -U ${{ job.services.postgres.env.POSTGRES_USER }} -d ${{ job.services.postgres.env.POSTGRES_DB }}
+          \d
