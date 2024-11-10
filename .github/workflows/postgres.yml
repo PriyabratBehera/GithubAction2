@@ -18,6 +18,5 @@ jobs:
     steps:
       - name: show table
         run: |
-#          psql -U ${{ job.services.postgres.env.POSTGRES_USER }} -d ${{ job.services.postgres.env.POSTGRES_DB }}
            psql -U priyabrat -d Priyabrat    
-          \d
+           \d
