@@ -2,18 +2,16 @@ name: Yml writing practice
 
 on: workflow_dispatch
 
-
-
 jobs:
   test:
     runs-on:
-      - self-hosted
+      - ubuntu-latest
     environment: production
     steps:
       - name: Print env first value
         run: |
           echo "Hello world!"
-          echo "${{vars.LASTNAME}}"
+          echo "${{github}}"
 
   deploy:
     needs: test

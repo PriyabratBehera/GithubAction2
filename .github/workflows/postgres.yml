@@ -47,7 +47,7 @@ jobs:
 #        env:
 #          PGPASSWORD: Behera@2002
 #        run: |
-#          pg_restore -h localhost -U priyabrat -d Priyabrat -v scripts/database_dump.sql
+#          pg_restore -h localhost -U priyabrat -d Pri678yabrat -v scripts/database_dump.sql
 
       - name: Show tables
         env:
