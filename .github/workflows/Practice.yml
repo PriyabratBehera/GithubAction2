@@ -13,12 +13,12 @@ jobs:
           echo "Hello world!"
           echo "${{github}}"
 
-  deploy:
-    needs: test
-    runs-on:
-      - self-hosted
-    steps:
-      - name: Print env second value
-        run: |
-          echo "${{vars.LASTNAME}}"
-          echo "${{toJSON(github)}}"
+#  deploy:
+#    needs: test
+#    runs-on:
+#      - ubuntu-latest
+#    steps:
+#      - name: Print env second value
+#        run: |
+#          echo "${{vars.LASTNAME}}"
+#          echo "${{toJSON(github)}}"
